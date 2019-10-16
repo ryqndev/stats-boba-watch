@@ -1,9 +1,7 @@
-import requests
 import os.path
 import os
 import errno
 import json
-from bs4 import BeautifulSoup
 import datetime
 
 
@@ -24,11 +22,14 @@ class Cleanse(object):
                 del line['__key__']
                 del line['description']
 
+                data.append(line)
                 self.add_to_map(self.clean_name(line['name']), name)
                 self.add_to_map(self.clean_date(line['date']), date)
                 self.add_to_map(self.clean_location(line['location']), location)
                 self.add_to_map(line['price'], price)
 
+        with open(os.path.dirname(__file__) + '/../raw_data/parsed_drink_data_2019-10-15.json', 'w') as fp:
+                json.dump(data, fp, sort_keys=True, indent=4)
         with open(os.path.dirname(__file__) + '/../data/1/name.json', 'w') as fp:
                 json.dump(name, fp, sort_keys=True, indent=4)
         with open(os.path.dirname(__file__) + '/../data/1/date.json', 'w') as fp:
