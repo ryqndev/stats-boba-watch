@@ -27,16 +27,19 @@ class Cleanse(object):
                 self.add_to_map(self.clean_date(line['date']), date)
                 self.add_to_map(self.clean_location(line['location']), location)
                 self.add_to_map(line['price'], price)
+            # data = json.load(fp)
+            # for drink in data:
+            #     self.add_to_map(data.name)
 
-        with open(os.path.dirname(__file__) + '/../raw_data/parsed_drink_data_2019-10-15.json', 'w') as fp:
+        with open(os.path.dirname(__file__) + '/../raw_data/parsed2019-12-03T22_23_031', 'w') as fp:
                 json.dump(data, fp, sort_keys=True, indent=4)
-        with open(os.path.dirname(__file__) + '/../data/1/name.json', 'w') as fp:
+        with open(os.path.dirname(__file__) + '/../data/2/name.json', 'w') as fp:
                 json.dump(name, fp, sort_keys=True, indent=4)
-        with open(os.path.dirname(__file__) + '/../data/1/date.json', 'w') as fp:
+        with open(os.path.dirname(__file__) + '/../data/2/date.json', 'w') as fp:
                 json.dump(date, fp, sort_keys=True, indent=4)
-        with open(os.path.dirname(__file__) + '/../data/1/loc.json', 'w') as fp:
+        with open(os.path.dirname(__file__) + '/../data/2/loc.json', 'w') as fp:
                 json.dump(location, fp, sort_keys=True, indent=4)
-        with open(os.path.dirname(__file__) + '/../data/1/price.json', 'w') as fp:
+        with open(os.path.dirname(__file__) + '/../data/2/price.json', 'w') as fp:
                 json.dump(price, fp, sort_keys=True, indent=4)
 
     def clean_name(self, name):
@@ -56,4 +59,4 @@ class Cleanse(object):
 
 if __name__ == "__main__":
     cleanse = Cleanse()
-    cleanse.cleanse_drinks('/../raw_data/parsed_drink_data_2019-10-15_drink_data')
+    cleanse.cleanse_drinks('/../raw_data/parsed2019-12-03T22_23_031')
